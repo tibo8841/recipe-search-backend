@@ -1,6 +1,12 @@
+import getUser from "./getUser";
+import registerUser from "./registerUser";
+
 const express = require("express");
 const app = express();
 const { Client } = require("pg");
+const hasher = require("pbkdf2-password-hash");
+const cookieParser = require("cookie-parser");
+const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -10,12 +16,12 @@ const connectionString = process.env.CONNECTION_STRING;
 const client = new Client(connectionString);
 client.connect();
 
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
   res.send("Recipe Search");
-});
-
-app.get("/test", (req, res) => {
-  res.send("testing server works");
 });
 
 app.listen(PORT, () => {
