@@ -1,9 +1,10 @@
 export default async function getRecipe(req, res) {
   const { search, cuisine, diet } = await req.query;
 
-  const recipe = await client.query(`SELECT * FROM r WHERE username = $1`, [
-    username,
-  ]);
+  const recipe = await client.query(
+    `SELECT * FROM recipes WHERE username = $1`,
+    [username]
+  );
   if (result.rows.length === 0) {
     res.json({ response: "User not found" });
   } else {

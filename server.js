@@ -79,6 +79,3 @@ app.get("/cuisines", async (req, res) => {
 app.get("/diets", async (req, res) => {
   await getDiets(req, res);
 });
-
-// DISCUSS THIS BECOS AM CONFUSED, what should all my endpoints be? get recipe for each individual recipe displayed
-// and get cuisines to populate cuisines drop down etc.. but what else should i be getting
