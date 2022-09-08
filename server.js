@@ -1,6 +1,7 @@
-import getUser from "./getUser";
-import registerUser from "./registerUser";
-import addIngredients from "./addIngredients";
+// import getUser from "./getUser";
+// import registerUser from "./registerUser";
+// import addIngredients from "./addIngredients";
+const addIngredients = require("./addIngredients");
 
 const express = require("express");
 const app = express();
@@ -86,5 +87,5 @@ app.get("/ingredients", async (req, res) => {
 });
 
 app.post("/ingredients", async (req, res) => {
-  await addIngredients(req, res);
+  addIngredients.addIngredients(reg, res, client);
 });

@@ -1,10 +1,13 @@
-export default async function addIngredients(req, res) {
-  const ingredients = await req.query;
+async function addIngredients(req, res, client) {
+  const ingredients = req.body;
 
-  ingredients.forEach(ingredient => {
-    await client.query(`INSERT INTO ingredients (ingredient_name) VALUES ($1)`, [ingredient])
-  })
+  ingredients.forEach((ingredient) => {
+    client.query(`INSERT INTO ingredients (ingredient_name) VALUES ($1)`, [
+      ingredient,
+    ]);
+  });
 
-  res.json({ response: "Ingredients added"});
-  
+  res.json({ response: "Ingredients added" });
 }
+
+module.exports = { addIngredients };
