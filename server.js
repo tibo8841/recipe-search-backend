@@ -87,5 +87,5 @@ app.get("/ingredients", async (req, res) => {
 });
 
 app.post("/ingredients", async (req, res) => {
-  addIngredients.addIngredients(reg, res, client);
+  addIngredients.addIngredients(req, res, client);
 });
