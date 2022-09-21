@@ -2,8 +2,10 @@
 // import registerUser from "./registerUser";
 // import addIngredients from "./addIngredients";
 const addIngredients = require("./addIngredients");
+const getIngredients = require("./getIngredients");
 
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const { Client } = require("pg");
 const hasher = require("pbkdf2-password-hash");
@@ -12,11 +14,18 @@ const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const corsSettings = {
+  origin: ["http://localhost:3000"],
+  credentials: true,
+};
+
 const PORT = process.env.PORT || 8080;
 const connectionString = process.env.CONNECTION_STRING;
 
 const client = new Client(connectionString);
 client.connect();
+
+app.use(cors(corsSettings));
 
 app.use(express.json());
 
@@ -83,7 +92,7 @@ app.get("/diets", async (req, res) => {
 });
 
 app.get("/ingredients", async (req, res) => {
-  await getCuisines(req, res);
+  getIngredients.getIngredients(req, res, client);
 });
 
 app.post("/ingredients", async (req, res) => {
