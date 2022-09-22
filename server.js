@@ -1,4 +1,6 @@
 const addIngredients = require("./addIngredients");
+const addCuisines = require("./addCuisines");
+const addDiets = require("./addDiets");
 const getIngredients = require("./getIngredients");
 const getCuisines = require("./getCuisines");
 const getDiets = require("./getDiets");
@@ -96,4 +98,12 @@ app.get("/ingredients", async (req, res) => {
 
 app.post("/ingredients", async (req, res) => {
   addIngredients.addIngredients(req, res, client);
+});
+
+app.post("/cuisines", async (req, res) => {
+  addCuisines.addCuisines(req, res, client);
+});
+
+app.post("/diets", async (req, res) => {
+  addDiets.addDiets(req, res, client);
 });
