@@ -1,8 +1,7 @@
-// import getUser from "./getUser";
-// import registerUser from "./registerUser";
-// import addIngredients from "./addIngredients";
 const addIngredients = require("./addIngredients");
 const getIngredients = require("./getIngredients");
+const getCuisines = require("./getCuisines");
+const getDiets = require("./getDiets");
 
 const express = require("express");
 const cors = require("cors");
@@ -84,11 +83,11 @@ app.get("/recipe", async (req, res) => {
 });
 
 app.get("/cuisines", async (req, res) => {
-  await getCuisines(req, res);
+  getCuisines.getCuisines(req, res, client);
 });
 
 app.get("/diets", async (req, res) => {
-  await getDiets(req, res);
+  getDiets.getDiets(req, res, client);
 });
 
 app.get("/ingredients", async (req, res) => {
