@@ -38,7 +38,7 @@ app.listen(PORT, "0.0.0.0", () => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Recipe Search");
+  res.send("Recipe Search is working! see github repo for other endpoints");
 });
 
 app.post("/register", async (req, res) => {
