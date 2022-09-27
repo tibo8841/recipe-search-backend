@@ -15,12 +15,13 @@ const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
+const PORT = process.env.PORT || 8080;
+
 const corsSettings = {
-  origin: ["http://localhost:3000"],
+  origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
   credentials: true,
 };
 
-const PORT = process.env.PORT || 8080;
 const connectionString = process.env.CONNECTION_STRING;
 
 const client = new Client(connectionString);
@@ -32,12 +33,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("Recipe Search");
-});
-
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("Recipe Search");
 });
 
 app.post("/register", async (req, res) => {
@@ -107,3 +108,5 @@ app.post("/cuisines", async (req, res) => {
 app.post("/diets", async (req, res) => {
   addDiets.addDiets(req, res, client);
 });
+
+module.exports = app;
