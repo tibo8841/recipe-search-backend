@@ -33,7 +33,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
