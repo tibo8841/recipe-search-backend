@@ -15,7 +15,7 @@ const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 8080;
 
 const corsSettings = {
   origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
@@ -33,7 +33,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(`0.0.0.0:${PORT}`, () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
