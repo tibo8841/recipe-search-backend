@@ -33,10 +33,6 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Example app listening on port ${PORT}`);
-});
-
 app.get("/", (req, res) => {
   res.send("Recipe Search is working! see github repo for other endpoints");
 });
@@ -107,6 +103,10 @@ app.post("/cuisines", async (req, res) => {
 
 app.post("/diets", async (req, res) => {
   addDiets.addDiets(req, res, client);
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Example app listening on port ${PORT}`);
 });
 
 module.exports = app;
