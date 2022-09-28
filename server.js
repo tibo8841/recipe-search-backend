@@ -22,10 +22,10 @@ const corsSettings = {
   credentials: true,
 };
 
-// const connectionString = process.env.CONNECTION_STRING;
+const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
-// const client = new Client(connectionString);
-// client.connect();
+const client = new Client(CONNECTION_STRING);
+client.connect();
 
 app.use(cors(corsSettings));
 
