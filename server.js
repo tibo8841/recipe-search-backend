@@ -2,11 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { Client } = require("pg");
-const hasher = require("pbkdf2-password-hash");
-const cookieParser = require("cookie-parser");
-const crypto = require("crypto");
-const dotenv = require("dotenv");
-dotenv.config();
+// const hasher = require("pbkdf2-password-hash");
+// const cookieParser = require("cookie-parser");
+// const crypto = require("crypto");
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 const addIngredients = require("./addIngredients");
 const addCuisines = require("./addCuisines");
