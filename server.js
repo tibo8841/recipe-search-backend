@@ -8,30 +8,30 @@ const { Client } = require("pg");
 // const dotenv = require("dotenv");
 // dotenv.config();
 
-const addIngredients = require("./addIngredients");
-const addCuisines = require("./addCuisines");
-const addDiets = require("./addDiets");
-const getIngredients = require("./getIngredients");
-const getCuisines = require("./getCuisines");
-const getDiets = require("./getDiets");
+// const addIngredients = require("./addIngredients");
+// const addCuisines = require("./addCuisines");
+// const addDiets = require("./addDiets");
+// const getIngredients = require("./getIngredients");
+// const getCuisines = require("./getCuisines");
+// const getDiets = require("./getDiets");
 
 const PORT = process.env.PORT || 3030;
 
-const corsSettings = {
-  origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
-  credentials: true,
-};
+// const corsSettings = {
+//   origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
+//   credentials: true,
+// };
 
-const connectionString = process.env.CONNECTION_STRING;
+// const connectionString = process.env.CONNECTION_STRING;
 
-const client = new Client(connectionString);
-client.connect();
+// const client = new Client(connectionString);
+// client.connect();
 
-app.use(cors(corsSettings));
+// app.use(cors(corsSettings));
 
-app.use(express.json());
+// app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Recipe Search is working! see github repo for other endpoints");
