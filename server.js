@@ -105,6 +105,6 @@ app.get("/", (req, res) => {
 //   addDiets.addDiets(req, res, client);
 // });
 
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
