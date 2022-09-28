@@ -8,12 +8,12 @@ const { Client } = require("pg");
 // const dotenv = require("dotenv");
 // dotenv.config();
 
-// const addIngredients = require("./addIngredients");
-// const addCuisines = require("./addCuisines");
-// const addDiets = require("./addDiets");
-// const getIngredients = require("./getIngredients");
-// const getCuisines = require("./getCuisines");
-// const getDiets = require("./getDiets");
+const addIngredients = require("./addIngredients");
+const addCuisines = require("./addCuisines");
+const addDiets = require("./addDiets");
+const getIngredients = require("./getIngredients");
+const getCuisines = require("./getCuisines");
+const getDiets = require("./getDiets");
 
 const PORT = process.env.PORT || 3030;
 
