@@ -1,13 +1,6 @@
-const addIngredients = require("./addIngredients");
-const addCuisines = require("./addCuisines");
-const addDiets = require("./addDiets");
-const getIngredients = require("./getIngredients");
-const getCuisines = require("./getCuisines");
-const getDiets = require("./getDiets");
-
 const express = require("express");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
 const { Client } = require("pg");
 const hasher = require("pbkdf2-password-hash");
 const cookieParser = require("cookie-parser");
@@ -15,7 +8,14 @@ const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const PORT = process.env.PORT || 8080;
+const addIngredients = require("./addIngredients");
+const addCuisines = require("./addCuisines");
+const addDiets = require("./addDiets");
+const getIngredients = require("./getIngredients");
+const getCuisines = require("./getCuisines");
+const getDiets = require("./getDiets");
+
+const PORT = process.env.PORT || 3030;
 
 const corsSettings = {
   origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
