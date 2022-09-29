@@ -14,6 +14,7 @@ const addDiets = require("./addDiets");
 const getIngredients = require("./getIngredients");
 const getCuisines = require("./getCuisines");
 const getDiets = require("./getDiets");
+const createRecipe = require("./createRecipe");
 
 const PORT = process.env.PORT || 3030;
 
@@ -74,7 +75,7 @@ app.delete("/profile/recipes", async (req, res) => {
 });
 
 app.post("/recipe", async (req, res) => {
-  await createRecipe(req, res);
+  createRecipe.createRecipe(req, res, client);
 });
 
 app.get("/recipe", async (req, res) => {
