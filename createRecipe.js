@@ -9,29 +9,42 @@ async function createRecipe(req, res, client) {
     diets,
   } = req.body;
 
-  console.log(
-    recipeName,
-    recipeLink,
-    imageLink,
-    minsTaken,
-    ingredients,
-    cuisines,
-    diets
-  );
+  // console.log(
+  //   recipeName,
+  //   recipeLink,
+  //   imageLink,
+  //   minsTaken,
+  //   ingredients,
+  //   cuisines,
+  //   diets
+  // );
 
-  client.query(
-    `INSERT INTO recipes (name, picture, link, mins_taken) VALUES ($1, $2, $3, $4)`,
+  let recipeID = await client.query(
+    `INSERT INTO recipes (name, picture, link, mins_taken) VALUES ($1, $2, $3, $4)
+    RETURNING id`,
     [recipeName, imageLink, recipeLink, minsTaken]
   );
 
-  const recipeID = client.query(`SELECT id FROM recipes WHERE name = '$1'`, [
-    recipeName,
-  ]);
+  recipeID = recipeID.rows[0]["id"];
 
   ingredients.forEach((ingredient) => {
     client.query(
       `INSERT INTO recipes_ingredients (recipe_id, ingredient_id) VALUES ($1, $2)`,
-      [recipeID, ingredient[id]]
+      [recipeID, ingredient["id"]]
+    );
+  });
+
+  cuisines.forEach((cuisine) => {
+    client.query(
+      `INSERT INTO recipes_cuisines (recipe_id, cuisine_id) VALUES ($1, $2)`,
+      [recipeID, cuisine["id"]]
+    );
+  });
+
+  diets.forEach((diet) => {
+    client.query(
+      `INSERT INTO recipes_diets (recipe_id, diet_id) VALUES ($1, $2)`,
+      [recipeID, diet["id"]]
     );
   });
 
