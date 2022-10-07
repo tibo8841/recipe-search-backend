@@ -15,6 +15,7 @@ const getIngredients = require("./getIngredients");
 const getCuisines = require("./getCuisines");
 const getDiets = require("./getDiets");
 const createRecipe = require("./createRecipe");
+const getRecipe = require("./getRecipe");
 
 const PORT = process.env.PORT || 3030;
 
@@ -38,48 +39,48 @@ app.get("/", (req, res) => {
   res.send("Recipe Search is working! see github repo for other endpoints");
 });
 
-app.post("/register", async (req, res) => {
-  await registerUser(req, res);
-});
+// app.post("/register", async (req, res) => {
+//   await registerUser(req, res);
+// });
 
-app.get("/login", async (req, res) => {
-  await getUser(req, res);
-});
+// app.get("/login", async (req, res) => {
+//   await getUser(req, res);
+// });
 
-app.get("/sessions", async (req, res) => {
-  await getLoggedInUser(req, res);
-});
+// app.get("/sessions", async (req, res) => {
+//   await getLoggedInUser(req, res);
+// });
 
-app.post("/sessions", async (req, res) => {
-  await startSession(req, res);
-});
+// app.post("/sessions", async (req, res) => {
+//   await startSession(req, res);
+// });
 
-app.delete("/sessions", async (req, res) => {
-  await endSession(req, res);
-});
+// app.delete("/sessions", async (req, res) => {
+//   await endSession(req, res);
+// });
 
-app.get("/profile", async (req, res) => {
-  await getProfile(req, res);
-});
+// app.get("/profile", async (req, res) => {
+//   await getProfile(req, res);
+// });
 
-app.patch("/profile/picture", async (req, res) => {
-  await updateProfilePicture(req, res);
-});
+// app.patch("/profile/picture", async (req, res) => {
+//   await updateProfilePicture(req, res);
+// });
 
-app.post("/profile/recipes", async (req, res) => {
-  await saveRecipe(req, res);
-});
+// app.post("/profile/recipes", async (req, res) => {
+//   await saveRecipe(req, res);
+// });
 
-app.delete("/profile/recipes", async (req, res) => {
-  await deleteSavedRecipe(req, res);
-});
+// app.delete("/profile/recipes", async (req, res) => {
+//   await deleteSavedRecipe(req, res);
+// });
 
-app.post("/recipe", async (req, res) => {
+app.post("/recipes", async (req, res) => {
   createRecipe.createRecipe(req, res, client);
 });
 
-app.get("/recipe", async (req, res) => {
-  await getRecipe(req, res);
+app.get("/recipes", async (req, res) => {
+  getRecipe.getRecipe(req, res, client);
 });
 
 app.get("/cuisines", async (req, res) => {

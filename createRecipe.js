@@ -9,16 +9,6 @@ async function createRecipe(req, res, client) {
     diets,
   } = req.body;
 
-  // console.log(
-  //   recipeName,
-  //   recipeLink,
-  //   imageLink,
-  //   minsTaken,
-  //   ingredients,
-  //   cuisines,
-  //   diets
-  // );
-
   let recipeID = await client.query(
     `INSERT INTO recipes (name, picture, link, mins_taken) VALUES ($1, $2, $3, $4)
     RETURNING id`,
