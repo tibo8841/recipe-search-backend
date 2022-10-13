@@ -40,7 +40,7 @@ async function getRecipe(req, res, client) {
     [ingredientID, cuisineID, dietID]
   );
 
-  console.log(recipe.rows);
+  res.json({ response: "Recipes found", Recipes: recipe.rows });
 }
 
 // NOTE TO SELF: figure out how to make it work for some search expressions in SQL query if not all are there
