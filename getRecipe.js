@@ -1,5 +1,5 @@
 async function getRecipe(req, res, client) {
-  const { search, ingredients, cuisine, diet } = await req.query;
+  const { ingredients, cuisine, diet } = await req.query;
 
   let ingredientID;
   let cuisineID;
