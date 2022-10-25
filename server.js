@@ -39,13 +39,13 @@ app.get("/", (req, res) => {
   res.send("Recipe Search is working! see github repo for other endpoints");
 });
 
-// app.post("/register", async (req, res) => {
-//   await registerUser(req, res);
-// });
+app.post("/register", async (req, res) => {
+  registerUser.registerUser(req, res);
+});
 
-// app.get("/login", async (req, res) => {
-//   await getUser(req, res);
-// });
+app.get("/login", async (req, res) => {
+  getUser.getUser(req, res);
+});
 
 // app.get("/sessions", async (req, res) => {
 //   await getLoggedInUser(req, res);

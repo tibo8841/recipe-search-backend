@@ -1,4 +1,4 @@
-export default async function registerUser(req, res) {
+async function registerUser(req, res) {
   const { username, password } = await req.body;
 
   const usernameCheck = await client.query(
@@ -24,3 +24,5 @@ export default async function registerUser(req, res) {
     res.json({ response: "added new user" });
   }
 }
+
+module.exports = { registerUser };
