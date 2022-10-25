@@ -40,11 +40,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  registerUser.registerUser(req, res);
+  registerUser.registerUser(req, res, client);
 });
 
 app.get("/login", async (req, res) => {
-  getUser.getUser(req, res);
+  getUser.getUser(req, res, client);
 });
 
 // app.get("/sessions", async (req, res) => {
