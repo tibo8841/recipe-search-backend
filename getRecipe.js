@@ -7,6 +7,7 @@ async function getRecipe(req, res, client) {
   let joinString = "SELECT * FROM recipes";
   let whereString = " WHERE ";
   let queryArr = [];
+  let variableCount = 1;
 
   if (ingredients) {
     ingredientID = await client.query(
@@ -16,7 +17,8 @@ async function getRecipe(req, res, client) {
     ingredientID = ingredientID.rows[0]["id"];
     joinString +=
       " INNER JOIN recipes_ingredients AS r_i ON recipes.id = r_i.recipe_id";
-    whereString += "r_i.ingredient_id = $1;";
+    whereString += `r_i.ingredient_id = $${variableCount};`;
+    variableCount += 1;
     queryArr.push(ingredientID);
   }
 
@@ -28,7 +30,8 @@ async function getRecipe(req, res, client) {
     cuisineID = cuisineID.rows[0]["id"];
     joinString +=
       " INNER JOIN recipes_cuisines AS r_c ON recipes.id = r_c.recipe_id";
-    whereString += "r_c.cuisine_id = $2;";
+    whereString += `r_c.cuisine_id = $${variableCount};`;
+    variableCount += 1;
     queryArr.push(cuisineID);
   }
 
@@ -39,7 +42,8 @@ async function getRecipe(req, res, client) {
     dietID = dietID.rows[0]["id"];
     joinString +=
       " INNER JOIN recipes_diets AS r_d ON recipes.id = r_d.recipe_id";
-    whereString += "r_d.diet_id = $3;";
+    whereString += `r_d.diet_id = $${variableCount};`;
+    variableCount += 1;
     queryArr.push(dietID);
   }
 
