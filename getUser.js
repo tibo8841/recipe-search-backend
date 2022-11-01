@@ -1,4 +1,4 @@
-async function getUser(req, res) {
+async function getUser(req, res, client, hasher) {
   const { username, password } = await req.query;
 
   const result = await client.query(`SELECT * FROM users WHERE username = $1`, [

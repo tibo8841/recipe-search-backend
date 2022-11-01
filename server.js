@@ -40,11 +40,11 @@ app.get("/", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  registerUser.registerUser(req, res, client);
+  registerUser.registerUser(req, res, client, hasher);
 });
 
 app.get("/login", async (req, res) => {
-  getUser.getUser(req, res, client);
+  getUser.getUser(req, res, client, hasher);
 });
 
 // app.get("/sessions", async (req, res) => {
@@ -61,10 +61,6 @@ app.get("/login", async (req, res) => {
 
 // app.get("/profile", async (req, res) => {
 //   await getProfile(req, res);
-// });
-
-// app.patch("/profile/picture", async (req, res) => {
-//   await updateProfilePicture(req, res);
 // });
 
 // app.post("/profile/recipes", async (req, res) => {

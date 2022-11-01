@@ -1,11 +1,11 @@
-async function registerUser(req, res) {
+async function registerUser(req, res, client, hasher) {
   const { username, password } = await req.body;
 
   const usernameCheck = await client.query(
     `SELECT * FROM users WHERE username = $1`,
     [username]
   );
-  if (usernameCheck.rows.length != 0) {
+  if (usernameCheck.rows.length !== 0) {
     res.json({ response: "username already exists" });
   } else {
     await client.query(
@@ -17,8 +17,7 @@ async function registerUser(req, res) {
       [username]
     );
     await client.query(
-      `INSERT INTO user_customisation (user_id, profile_picture_id) 
-    VALUES($1, 1)`,
+      `INSERT INTO user_customisation (user_id, profile_picture_id) VALUES($1, 1)`,
       [newUser.rows[0].id]
     );
     res.json({ response: "added new user" });
