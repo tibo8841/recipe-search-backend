@@ -47,17 +47,17 @@ app.get("/login", async (req, res) => {
   getUser.getUser(req, res, client, hasher);
 });
 
-// app.get("/sessions", async (req, res) => {
-//   await getLoggedInUser(req, res);
-// });
+app.get("/sessions", async (req, res) => {
+  getLoggedInUser.getLoggedInUser(req, res, client);
+});
 
-// app.post("/sessions", async (req, res) => {
-//   await startSession(req, res);
-// });
+app.post("/sessions", async (req, res) => {
+  startSession.startSession(req, res, client, crypto);
+});
 
-// app.delete("/sessions", async (req, res) => {
-//   await endSession(req, res);
-// });
+app.delete("/sessions", async (req, res) => {
+  endSession.endSession(req, res, client);
+});
 
 // app.get("/profile", async (req, res) => {
 //   await getProfile(req, res);
