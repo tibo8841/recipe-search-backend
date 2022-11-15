@@ -16,6 +16,12 @@ const getCuisines = require("./getCuisines");
 const getDiets = require("./getDiets");
 const createRecipe = require("./createRecipe");
 const getRecipe = require("./getRecipe");
+const getUser = require("./getUser");
+const getLoggedInUser = require("./getLoggedInUser");
+const registerUser = require("./registerUser");
+const startSession = require("./startSession");
+const endSession = require("./endSession");
+const getProfile = require("./getProfile");
 
 const PORT = process.env.PORT || 3030;
 
@@ -34,6 +40,8 @@ app.use(cors(corsSettings));
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
   res.send("Recipe Search is working! see github repo for other endpoints");
@@ -60,7 +68,7 @@ app.delete("/sessions", async (req, res) => {
 });
 
 // app.get("/profile", async (req, res) => {
-//   await getProfile(req, res);
+//   getProfile.getProfile(req, res, client);
 // });
 
 // app.post("/profile/recipes", async (req, res) => {
