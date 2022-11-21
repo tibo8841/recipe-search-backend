@@ -1,4 +1,4 @@
-async function endSession(req, res) {
+async function endSession(req, res, client) {
   try {
     const sessionID = req.cookies.sessionID;
     await client.query(`DELETE FROM sessions WHERE uuid = $1`, [sessionID]);
