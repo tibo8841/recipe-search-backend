@@ -1,5 +1,7 @@
 async function getLoggedInUser(req, res, client) {
+  console.log(req.cookies);
   const sessionID = req.cookies.sessionID;
+  console.log(sessionID);
   const user = await getUserFromID(sessionID, client);
   if (user.length > 0) {
     res.json({
