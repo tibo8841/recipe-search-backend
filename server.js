@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const crypto = require("crypto");
 const dotenv = require("dotenv");
-const session = require("express-session");
 dotenv.config();
 
 const addIngredients = require("./addIngredients");
@@ -31,18 +30,6 @@ const corsSettings = {
   origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
   credentials: true,
 };
-
-app.use(
-  session({
-    secret: "test",
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: "none",
-      secure: "true",
-    },
-  })
-);
 
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
