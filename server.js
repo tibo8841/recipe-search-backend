@@ -3,9 +3,11 @@ const app = express();
 const cors = require("cors");
 const { Client } = require("pg");
 const hasher = require("pbkdf2-password-hash");
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const crypto = require("crypto");
 const dotenv = require("dotenv");
+const session = require("express-session");
 dotenv.config();
 
 const addIngredients = require("./addIngredients");
@@ -30,6 +32,18 @@ const corsSettings = {
   credentials: true,
 };
 
+app.use(
+  session({
+    secret: "test",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: "none",
+      secure: "true",
+    },
+  })
+);
+
 const CONNECTION_STRING = process.env.CONNECTION_STRING;
 
 const client = new Client(CONNECTION_STRING);
@@ -39,7 +53,7 @@ app.use(cors(corsSettings));
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cookieParser());
 
