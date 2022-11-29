@@ -7,7 +7,7 @@ async function startSession(req, res, client, crypto) {
       [sessionID, userID]
     );
     res.cookie("sessionID", sessionID);
-    return res.json({ response: "session started" });
+    res.json({ response: "session started" });
   } else {
     res.json({ response: "session not started" });
   }

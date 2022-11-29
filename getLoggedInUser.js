@@ -2,13 +2,13 @@ async function getLoggedInUser(req, res, client) {
   const sessionID = req.cookies.sessionID;
   const user = await getUserFromID(sessionID, client);
   if (user.length > 0) {
-    return res.json({
+    res.json({
       response: true,
       username: user[0].username,
       id: user[0].user_id,
     });
   } else {
-    return res.json({ response: false });
+    res.json({ response: false });
   }
 }
 
