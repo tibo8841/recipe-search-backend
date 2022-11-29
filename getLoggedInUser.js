@@ -8,7 +8,7 @@ async function getLoggedInUser(req, res, client) {
       id: user[0].user_id,
     });
   } else {
-    res.json({ response: false });
+    res.json({ response: false, sessionID: sessionID, user: user });
   }
 }
 
