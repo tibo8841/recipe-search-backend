@@ -27,7 +27,11 @@ const getProfile = require("./getProfile");
 const PORT = process.env.PORT || 3030;
 
 const corsSettings = {
-  origin: ["http://localhost:3000", "https://recipe-search-tibo.netlify.app"],
+  origin: [
+    "http://localhost:3000",
+    "https://recipe-search-tibo.netlify.app",
+    "https://www.recipe-search.tibo8841.co.uk",
+  ],
   credentials: true,
 };
 
