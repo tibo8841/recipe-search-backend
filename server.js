@@ -22,7 +22,9 @@ const getLoggedInUser = require("./getLoggedInUser");
 const registerUser = require("./registerUser");
 const startSession = require("./startSession");
 const endSession = require("./endSession");
-const getProfile = require("./getProfile");
+const getSavedRecipes = require("./getSavedRecipes");
+const saveRecipe = require("./saveRecipe");
+const deleteSavedRecipe = require("./deleteSavedRecipe");
 
 const PORT = process.env.PORT || 3030;
 
@@ -72,17 +74,17 @@ app.delete("/sessions", async (req, res) => {
   endSession.endSession(req, res, client);
 });
 
-// app.get("/profile", async (req, res) => {
-//   getProfile.getProfile(req, res, client);
-// });
+app.get("/profile/recipes", async (req, res) => {
+  getSavedRecipes.getSavedRecipes(req, res, client);
+});
 
-// app.post("/profile/recipes", async (req, res) => {
-//   await saveRecipe(req, res);
-// });
+app.post("/profile/recipes", async (req, res) => {
+  saveRecipe.saveRecipe(req, res, client);
+});
 
-// app.delete("/profile/recipes", async (req, res) => {
-//   await deleteSavedRecipe(req, res);
-// });
+app.delete("/profile/recipes", async (req, res) => {
+  deleteSavedRecipe.deleteSavedRecipe(req, res, client);
+});
 
 app.post("/recipes", async (req, res) => {
   createRecipe.createRecipe(req, res, client);
